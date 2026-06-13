@@ -1,4 +1,7 @@
 import { useNavigate } from "react-router-dom";
+import { lazy, Suspense } from "react";
+
+const Antigravity = lazy(() => import("../components/Antigravity"));
 
 const HomePage = () => {
   const navigate = useNavigate();
@@ -104,6 +107,57 @@ const HomePage = () => {
               Scroll to explore system
             </span>
           </div>
+        </div>
+      </section>
+
+      {/* Antigravity Particle Section */}
+      <section
+        className="relative w-full overflow-hidden"
+        style={{ background: "#08080f", borderBottom: "1px solid #1e1e3a", borderTop: "1px solid #1e1e3a" }}
+      >
+        {/* Industrial label */}
+        <div className="absolute top-4 left-6 z-10 flex items-center gap-3">
+          <span className="w-2 h-2 animate-pulse" style={{ background: "#7c3aed" }} />
+          <span className="font-label-mono text-[10px] uppercase tracking-[0.3em]" style={{ color: "#4f46e5" }}>
+            // FIELD_ACTIVE — PARTICLE SYSTEM ONLINE
+          </span>
+        </div>
+        <Suspense
+          fallback={
+            <div
+              style={{ width: "100%", height: "400px", display: "flex", alignItems: "center", justifyContent: "center" }}
+            >
+              <span className="font-label-mono text-[10px] uppercase tracking-[0.3em] animate-pulse" style={{ color: "#2e2e5a" }}>
+                LOADING PARTICLE FIELD...
+              </span>
+            </div>
+          }
+        >
+          <div style={{ width: "100%", height: "400px", position: "relative" }}>
+            <Antigravity
+              count={300}
+              magnetRadius={6}
+              ringRadius={7}
+              waveSpeed={0.4}
+              waveAmplitude={1}
+              particleSize={1.5}
+              lerpSpeed={0.05}
+              color="#5227FF"
+              autoAnimate
+              particleVariance={1}
+              rotationSpeed={0}
+              depthFactor={1}
+              pulseSpeed={3}
+              particleShape="capsule"
+              fieldStrength={10}
+            />
+          </div>
+        </Suspense>
+        {/* Bottom label */}
+        <div className="absolute bottom-4 right-6 z-10">
+          <span className="font-label-mono text-[10px] uppercase tracking-[0.3em]" style={{ color: "#2e2e5a" }}>
+            GRAVITATIONAL FIELD SIMULATION v1.0
+          </span>
         </div>
       </section>
 

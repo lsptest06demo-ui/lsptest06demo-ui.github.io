@@ -13,12 +13,27 @@ const AboutPage = () => {
       <section className="max-w-container-max mx-auto px-margin-mobile md:px-unit-xl py-unit-xl">
         <div
           className="relative overflow-hidden h-[400px] md:h-[500px] p-unit-lg flex flex-col justify-end"
-          style={{ background: "#0a0a1a", border: `1px solid #1e1e3a` }}
+          style={{ border: `1px solid #1e1e3a` }}
         >
-          {/* Blue radial glow */}
+          {/* Industrial background image */}
+          <div
+            className="absolute inset-0"
+            style={{
+              backgroundImage: "url('https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=1400&q=80')",
+              backgroundSize: "cover",
+              backgroundPosition: "center 40%",
+              filter: "grayscale(50%) brightness(0.25)",
+            }}
+          />
+          {/* Blue-purple gradient overlay + bottom fade for text readability */}
           <div
             className="absolute inset-0 pointer-events-none"
-            style={{ background: `radial-gradient(circle at 30% 60%, rgba(29,78,216,0.15) 0%, transparent 70%)` }}
+            style={{
+              background: `
+                linear-gradient(180deg, rgba(8,8,15,0.3) 0%, rgba(8,8,15,0.85) 70%, rgba(8,8,15,0.98) 100%),
+                radial-gradient(circle at 70% 30%, rgba(29,78,216,0.25) 0%, transparent 60%)
+              `,
+            }}
           />
           <div className="relative z-10">
             <p className="font-label-mono uppercase mb-2" style={{ color: LP }}>
